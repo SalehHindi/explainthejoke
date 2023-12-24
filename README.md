@@ -4,7 +4,7 @@ This project explains jokes found on the internet. You can upload an image, and 
 
 ## How it works
 
-It uses an ML model from the Applied Research Center called [GFPGAN](https://github.com/TencentARC/GFPGAN) on [Replicate](https://replicate.com/) to restore face photos. This application gives you the ability to upload any photo, which will send it through this ML Model using a Next.js API route, and return your restored photo.
+Lorem Ipsem
 
 ## Running Locally
 
@@ -17,10 +17,6 @@ git clone
 ```
 
 ### Creating a account on Replicate to get an API key.
-
-1. Go to [Replicate](https://replicate.com/) to make an account.
-2. Click on your profile picture in the top right corner, and click on "Dashboard".
-3. Click on "Account" in the navbar. And, here you can find your API token, copy it.
 
 ### Storing API key in .env file.
 
