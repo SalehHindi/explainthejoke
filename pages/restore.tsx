@@ -169,7 +169,8 @@ const Home: NextPage = () => {
               restored={restoredImage!}
             />
           )}
-          {status === 'loading' ? (
+          {/* {status === 'loading' ? ( */}
+          {false ? (
             <div className="max-w-[670px] h-[250px] flex justify-center items-center">
               <Rings
                 height="100"
