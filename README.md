@@ -1,8 +1,6 @@
-# [RestorePhotos.io](https://restorephotos.io/)
+# [CanYouExplainTheJoke.com](https://CanYouExplainTheJoke.com/)
 
-This project restores old face photos using AI. Watch the [4 minute explainer video](https://twitter.com/nutlope/status/1614794731396931585) to see how I built this or see the [15 second demo](https://twitter.com/nutlope/status/1612488923716136962).
-
-[![Face Photo Restorer](./public/screenshot.png)](https://restorephotos.io/)
+This project explains jokes found on the internet. You can upload an image, and it explains the joke to the best of its ability. Inspire by [r/PeterExplainsTheJoke](https://www.reddit.com/r/PeterExplainsTheJoke/)
 
 ## How it works
 
