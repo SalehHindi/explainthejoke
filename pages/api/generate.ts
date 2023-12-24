@@ -24,76 +24,98 @@ export default async function handler(
   req: ExtendedNextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  // Check if user is logged in
-  const session = await getServerSession(req, res, authOptions);
-  if (!session || !session.user) {
-    return res.status(500).json("Login to upload.");
-  }
+  // TODO: 
+  // // Check if user is logged in
+  // const session = await getServerSession(req, res, authOptions);
+  // if (!session || !session.user) {
+  //   return res.status(500).json("Login to upload.");
+  // }
 
+  // TODO:
   // Rate Limiting by user email
-  if (ratelimit) {
-    const identifier = session.user.email;
-    const result = await ratelimit.limit(identifier!);
-    res.setHeader("X-RateLimit-Limit", result.limit);
-    res.setHeader("X-RateLimit-Remaining", result.remaining);
+  // if (ratelimit) {
+  //   // const identifier = session.user.email;
+  //   const identifier = "saleh.hindi.one@gmail.com"; // TODO:
+  //   const result = await ratelimit.limit(identifier!);
+  //   res.setHeader("X-RateLimit-Limit", result.limit);
+  //   res.setHeader("X-RateLimit-Remaining", result.remaining);
 
-    // Calcualte the remaining time until generations are reset
-    const diff = Math.abs(
-      new Date(result.reset).getTime() - new Date().getTime()
-    );
-    const hours = Math.floor(diff / 1000 / 60 / 60);
-    const minutes = Math.floor(diff / 1000 / 60) - hours * 60;
+  //   // Calcualte the remaining time until generations are reset
+  //   const diff = Math.abs(
+  //     new Date(result.reset).getTime() - new Date().getTime()
+  //   );
+  //   const hours = Math.floor(diff / 1000 / 60 / 60);
+  //   const minutes = Math.floor(diff / 1000 / 60) - hours * 60;
 
-    if (!result.success) {
-      return res
-        .status(429)
-        .json(
-          `Your generations will renew in ${hours} hours and ${minutes} minutes. Email hassan@hey.com if you have any questions.`
-        );
-    }
-  }
+  //   if (!result.success) {
+  //     return res
+  //       .status(429)
+  //       .json(
+  //         `Your generations will renew in ${hours} hours and ${minutes} minutes. Email hassan@hey.com if you have any questions.`
+  //       );
+  //   }
+  // }
 
   const imageUrl = req.body.imageUrl;
-  // POST request to Replicate to start the image restoration generation process
-  let startResponse = await fetch("https://api.replicate.com/v1/predictions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Token " + process.env.REPLICATE_API_KEY,
-    },
-    body: JSON.stringify({
-      version:
-        "9283608cc6b7be6b65a8e44983db012355fde4132009bf99d976b2f0896856a3",
-      input: { img: imageUrl, version: "v1.4", scale: 2 },
-    }),
-  });
+  async function fetchOpenAICompletions(imageUrl: string) {
+    // const OPENAI_API_KEY = "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"; // Ensure the API key is stored in an environment variable
+    const OPENAI_API_KEY = process.env.OPENAI_API_KEY; // Ensure the API key is stored in an environment variable
+    const requestBody = {
+        model: "gpt-4-vision-preview",
+        messages: [
+            {
+                role: "user",
+                content: [
+                    {
+                        type: "text",
+                        text: "You are given a picture of something funny from the interne. Can you explain the following joke and what makes it funny?"
+                    },
+                    {
+                        type: "image_url",
+                        image_url: {
+                            // url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+                            url: imageUrl
+                        }
+                    }
+                ]
+            }
+        ],
+        max_tokens: 300
+    };
 
-  let jsonStartResponse = await startResponse.json();
-  let endpointUrl = jsonStartResponse.urls.get;
+    try {
+        let response = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + OPENAI_API_KEY
+            },
+            body: JSON.stringify(requestBody)
+        });
+        // console.log("response found!!!")
+        // console.log("response", response)
 
-  // GET request to get the status of the image restoration process & return the result when it's ready
-  let restoredImage: string | null = null;
-  while (!restoredImage) {
-    // Loop in 1s intervals until the alt text is ready
-    console.log("polling for result...");
-    let finalResponse = await fetch(endpointUrl, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Token " + process.env.REPLICATE_API_KEY,
-      },
-    });
-    let jsonFinalResponse = await finalResponse.json();
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-    if (jsonFinalResponse.status === "succeeded") {
-      restoredImage = jsonFinalResponse.output;
-    } else if (jsonFinalResponse.status === "failed") {
-      break;
-    } else {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-    }
+        let jsonResponse = await response.json();
+        // console.log(jsonResponse);
+        // console.log("final responseeee", jsonResponse.choices[0].message.content);
+        const explanation = jsonResponse.choices[0].message.content
+        console.log("EXPLANATION")
+        console.log(explanation)
+
+
+        return explanation;
+    } catch (error) {
+        console.error('Error fetching from OpenAI API:', error);
+    }  
   }
+
+  const restoredImage = await fetchOpenAICompletions(imageUrl);
   res
     .status(200)
     .json(restoredImage ? restoredImage : "Failed to restore image");
+
 }

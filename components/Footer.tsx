@@ -6,35 +6,35 @@ export default function Footer() {
       <div>
         Powered by{' '}
         <a
-          href="https://replicate.com/"
+          href="https://openai.com/"
           target="_blank"
           className="font-bold transition hover:text-black/50"
         >
-          Replicate{' '}
+          OpenAI{' '}
         </a>
-        and{' '}
+        +{' '}
         <a
-          href="https://www.bytescale.com/"
+          href="https://www.Vercel.com/"
           target="_blank"
           className="font-bold transition hover:text-black/50"
         >
-          Bytescale
+          Vercel
         </a>
         . Created by{' '}
         <a
-          href="https://www.twitter.com/nutlope"
+          href="https://www.twitter.com/SalehOfTomorrow"
           target="_blank"
           className="font-bold transition hover:text-black/50"
         >
-          Hassan
+          Saleh Hindi
         </a>{' '}
-        (hassan@hey.com).
+        (saleh.hindi.one@gmail.com). 
       </div>
       <div className="flex space-x-4 pb-4 sm:pb-0">
         <Link
-          href="https://twitter.com/nutlope"
+          href="https://twitter.com/SalehOfTomorrow"
           className="group"
-          aria-label="TaxPal on Twitter"
+          aria-label="SalehHindi on Twitter"
         >
           <svg
             aria-hidden="true"
@@ -44,9 +44,9 @@ export default function Footer() {
           </svg>
         </Link>
         <Link
-          href="https://github.com/Nutlope/restorePhotos"
+          href="https://github.com/SalehHindi/explainthejoke"
           className="group"
-          aria-label="TaxPal on GitHub"
+          aria-label="ExplainTheJoke on GitHub"
         >
           <svg
             aria-hidden="true"

@@ -32,7 +32,8 @@ const Home: NextPage = () => {
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
   const { data, mutate } = useSWR('/api/remaining', fetcher);
-  const { data: session, status } = useSession();
+  var { data: session, status } = useSession();
+  status = "authenticated"
 
   const options: UploadWidgetConfig = {
     apiKey: !!process.env.NEXT_PUBLIC_UPLOAD_API_KEY
@@ -113,13 +114,13 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Restore Photos</title>
+        <title>Can You Explain The Joke</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header photo={session?.user?.image || undefined} />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-4 sm:mb-0 mb-8">
-        <a
+        {/* <a
           className="border shadow-xl flex max-w-md rounded-xl mb-6 hover:scale-[1.02] transition duration-300 ease-in-out"
           href="https://www.roomgpt.io/"
           target="_blank"
@@ -139,11 +140,11 @@ const Home: NextPage = () => {
               ROOMGPT.IO
             </p>
           </div>
-        </a>
+        </a> */}
         <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">
-          Restore any face photo
+          Explain any joke. Upload a picture of a joke or meme.
         </h1>
-        {status === 'authenticated' && data && (
+        {/* {status === 'authenticated' && data && (
           <p className="text-slate-500">
             You have{' '}
             <span className="font-semibold">
@@ -155,7 +156,7 @@ const Home: NextPage = () => {
               {data.hours} hours and {data.minutes} minutes.
             </span>
           </p>
-        )}
+        )} */}
         <div className="flex justify-between items-center w-full flex-col mt-4">
           <Toggle
             className={`${restoredLoaded ? 'visible mb-6' : 'invisible'}`}
@@ -188,8 +189,7 @@ const Home: NextPage = () => {
               <div className="h-[250px] flex flex-col items-center space-y-6 max-w-[670px] -mt-8">
                 <div className="max-w-xl text-gray-600">
                   Sign in below with Google to create a free account and restore
-                  your photos today. You will be able to restore 5 photos per
-                  day for free.
+                  your photos today. 
                 </div>
                 <button
                   onClick={() => signIn('google')}
@@ -218,7 +218,7 @@ const Home: NextPage = () => {
           {restoredImage && originalPhoto && !sideBySide && (
             <div className="flex sm:space-x-4 sm:flex-row flex-col">
               <div>
-                <h2 className="mb-1 font-medium text-lg">Original Photo</h2>
+                <h2 className="mb-1 font-medium text-lg">Joke</h2>
                 <Image
                   alt="original photo"
                   src={originalPhoto}
@@ -228,17 +228,20 @@ const Home: NextPage = () => {
                 />
               </div>
               <div className="sm:mt-0 mt-8">
-                <h2 className="mb-1 font-medium text-lg">Restored Photo</h2>
-                <a href={restoredImage} target="_blank" rel="noreferrer">
-                  <Image
+                <h2 className="mb-1 font-medium text-lg">Explanation</h2>
+                <div>
+                  <div style={{ width: '475px', height: '475px', fontSize: "12px" }}>
+                    {restoredImage}
+                  </div>
+                  {/* <Image
                     alt="restored photo"
                     src={restoredImage}
                     className="rounded-2xl relative sm:mt-0 mt-2 cursor-zoom-in"
                     width={475}
                     height={475}
                     onLoadingComplete={() => setRestoredLoaded(true)}
-                  />
-                </a>
+                  /> */}
+                </div>
               </div>
             </div>
           )}
@@ -266,6 +269,16 @@ const Home: NextPage = () => {
             </div>
           )}
           <div className="flex space-x-2 justify-center">
+            {true && (
+              <button
+              onClick={() => {
+                downloadPhoto(restoredImage!, appendNewToName(photoName!));
+              }}
+              className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
+              >
+                Upload New Photo
+              </button>
+            )}
             {originalPhoto && !loading && (
               <button
                 onClick={() => {
@@ -276,17 +289,7 @@ const Home: NextPage = () => {
                 }}
                 className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80 transition"
               >
-                Upload New Photo
-              </button>
-            )}
-            {restoredLoaded && (
-              <button
-                onClick={() => {
-                  downloadPhoto(restoredImage!, appendNewToName(photoName!));
-                }}
-                className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
-              >
-                Download Restored Photo
+                Share
               </button>
             )}
           </div>

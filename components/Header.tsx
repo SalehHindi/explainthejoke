@@ -13,7 +13,7 @@ export default function Header({ photo }: { photo?: string | undefined }) {
           height={20}
         />
         <h1 className="sm:text-3xl text-xl font-bold ml-2 tracking-tight">
-          restorePhotos.io
+          CanYouExplainTheJoke.com
         </h1>
       </Link>
       {photo ? (
@@ -36,7 +36,7 @@ export default function Header({ photo }: { photo?: string | undefined }) {
             href="/restore"
             className="border-gray-300 pr-4 space-x-2 hover:text-blue-400 transition hidden sm:flex"
           >
-            <p className="font-medium text-base">Restore</p>
+            <p className="font-medium text-base">Explain</p>
           </Link>
         </div>
       )}
