@@ -58,7 +58,6 @@ export default async function handler(
 
   const imageUrl = req.body.imageUrl;
   async function fetchOpenAICompletions(imageUrl: string) {
-    // const OPENAI_API_KEY = "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"; // Ensure the API key is stored in an environment variable
     const OPENAI_API_KEY = process.env.OPENAI_API_KEY; // Ensure the API key is stored in an environment variable
     const requestBody = {
         model: "gpt-4-vision-preview",
