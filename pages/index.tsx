@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-// import FileUpload from '../components/FileUpload';
 import SquigglyLines from '../components/SquigglyLines';
 import { Testimonials } from '../components/Testimonials';
 import va from '@vercel/analytics';
@@ -61,7 +60,7 @@ const Home: NextPage = () => {
           <div className="flex flex-col space-y-10 mt-4 mb-16">
             <div className="flex sm:space-x-2 sm:flex-row flex-col">
               {/* <FileUpload /> */}
-              {/*  */}
+              {/* TODO: */}
             </div>
           </div>
         </div>
