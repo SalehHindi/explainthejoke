@@ -232,7 +232,7 @@ const Home: NextPage = () => {
               <div className="sm:mt-0 mt-8">
                 <h2 className="mb-1 font-medium text-lg">Explanation</h2>
                 <div>
-                  <p style={{ width: '475px', height: '475px', fontSize: "12px" }}>
+                  <p style={{ width: '475px', height: '475px', fontSize: "12px", whiteSpace: "pre-wrap", maxWidth: '86vw' }}>
                     {restoredImage}
                   </p>
                   {/* <Image
