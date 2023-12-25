@@ -15,7 +15,7 @@ class MyDocument extends Document {
             property="og:description"
             content="Restore your old face photos and keep the memories alive."
           />
-          <meta property="og:title" content="CanYouExplainTheJoke?" />
+          <meta property="og:title" content="Don't get it?" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="CanYouExplainTheJoke" />
           <meta
@@ -24,11 +24,11 @@ class MyDocument extends Document {
           />
           <meta
             property="og:image"
-            content="https://restore-photos.vercel.app/og-image.png"
+            content="/og-image.png"
           />
           <meta
             name="twitter:image"
-            content="https://restore-photos.vercel.app/og-image.png"
+            content="/og-image.png"
           />
         </Head>
         <body>
