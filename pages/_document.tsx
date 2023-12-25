@@ -15,12 +15,12 @@ class MyDocument extends Document {
             property="og:description"
             content="Restore your old face photos and keep the memories alive."
           />
-          <meta property="og:title" content="Face Photo Restorer" />
+          <meta property="og:title" content="CanYouExplainTheJoke?" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Face Photo Restorer" />
+          <meta name="twitter:title" content="CanYouExplainTheJoke" />
           <meta
             name="twitter:description"
-            content="Restore your old photos and keep the memories alive."
+            content="Don't get a joke on the internet? Instead of looking like a clown, get an AI to explain it."
           />
           <meta
             property="og:image"
