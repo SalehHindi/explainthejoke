@@ -9,6 +9,17 @@ import { Testimonials } from '../components/Testimonials';
 import va from '@vercel/analytics';
 
 const Home: NextPage = () => {
+  if (typeof window !== 'undefined') {
+    // @ts-ignore
+    const clarity = window.clarity;
+    // debugger
+    if (clarity.track) {
+      clarity.track('generation-failed-event', {
+        message: 'Generation failed'
+      });
+    }
+  }
+  
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
