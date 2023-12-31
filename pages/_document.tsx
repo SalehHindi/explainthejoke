@@ -19,19 +19,25 @@ class MyDocument extends Document {
                   t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                   y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               })(window, document, "clarity", "script", "keq0xqx8yd");
-              
+              `,
+            }}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
               <!-- Google tag (gtag.js) -->
               <script async src="https://www.googletagmanager.com/gtag/js?id=G-9JJMGSBR6Y"></script>
               <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-
+              
                 gtag('config', 'G-9JJMGSBR6Y');
               </script>
               `,
             }}
           />
+
 
           <meta
             property="og:description"
