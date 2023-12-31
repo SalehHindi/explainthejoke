@@ -232,7 +232,7 @@ const Home: NextPage = () => {
               <div className="sm:mt-0 mt-8">
                 <h2 className="mb-1 font-medium text-lg">Explanation</h2>
                 <div>
-                  <p style={{ width: '475px', height: '475px', fontSize: "12px", whiteSpace: "pre-wrap", maxWidth: '86vw' }}>
+                  <p style={{ width: '475px', height: '475px', fontSize: "12px", whiteSpace: "pre-wrap", maxWidth: '86vw', maxHeight: '500px', overflowY: 'auto' }}>
                     {restoredImage}
                   </p>
                   {/* <Image
@@ -271,15 +271,16 @@ const Home: NextPage = () => {
             </div>
           )}
           <div className="flex space-x-2 justify-center">
-            {true && (
-              <button
-              onClick={() => {
-                downloadPhoto(restoredImage!, appendNewToName(photoName!));
-              }}
-              className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
-              >
-                Upload New Photo
-              </button>
+            {true && (<div />
+              // <button
+              // onClick={() => {
+              //   // TODO: HEREE !!!!!!
+              //   downloadPhoto(restoredImage!, appendNewToName(photoName!));
+              // }}
+              // className="bg-white rounded-full text-black border font-medium px-4 py-2 mt-8 hover:bg-gray-100 transition"
+              // >
+              //   Upload New Photo
+              // </button>
             )}
             {originalPhoto && !loading && (
               <button
@@ -291,7 +292,7 @@ const Home: NextPage = () => {
                 }}
                 className="bg-black rounded-full text-white font-medium px-4 py-2 mt-8 hover:bg-black/80 transition"
               >
-                Share
+                Try another joke  
               </button>
             )}
           </div>

@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex max-w-6xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
       <Head>
-        <title>Can You Explain The Joke</title>
+        <title>Can You Explain The Jok  e</title>
       </Head>
       <Header />
       <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-20">
@@ -40,12 +40,12 @@ const Home: NextPage = () => {
         <div className="flex justify-center space-x-4">
           <a
             className="bg-white rounded-xl text-black font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-gray-100 border"
-            href="https://www.roomgpt.io/"
+            href="https://twitter.com/SalehOfTomorrow"
             target="_blank"
             rel="noreferrer"
           >
-            <button onClick={() => va.track('RoomGPT link clicked')}>
-              Check out ....
+            <button onClick={() => va.track('Referral Clicked')}>
+              More Goodness
             </button>
           </a>
 
