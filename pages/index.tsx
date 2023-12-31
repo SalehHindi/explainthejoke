@@ -12,12 +12,18 @@ const Home: NextPage = () => {
   if (typeof window !== 'undefined') {
     // @ts-ignore
     const clarity = window.clarity;
-    // debugger
     if (clarity.track) {
       clarity.track('generation-failed-event', {
         message: 'Generation failed'
       });
     }
+    
+    
+    // // @ts-ignore
+    // if (window.gtag) {
+    //   // @ts-ignore
+    //   window.gtag('event', 'generation-failed-2');
+    // }    
   }
   
   return (
