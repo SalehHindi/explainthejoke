@@ -142,8 +142,8 @@ const Home: NextPage = () => {
             </p>
           </div>
         </a> */}
-        <h1 className="mx-auto max-w-4xl font-display text-4xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">
-          Explain any joke. Upload a picture of a joke or meme.
+        <h1 className="mx-auto max-w-4xl font-display text-xl font-bold tracking-normal text-slate-900 sm:text-6xl mb-5">
+          Upload a picture of a joke or meme.
         </h1>
         {/* {status === 'authenticated' && data && (
           <p className="text-slate-500">

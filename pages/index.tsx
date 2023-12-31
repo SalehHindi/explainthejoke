@@ -26,7 +26,7 @@ const Home: NextPage = () => {
           users
         </a> */}
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-slate-900 sm:text-7xl">
-          Explaining internet jokes{' '}
+          Don't get it? <br />Explain any joke {' '}
           <span className="relative whitespace-nowrap text-[#3290EE]">
             <SquigglyLines />
             <span className="relative">using AI</span>
